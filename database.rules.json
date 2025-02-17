@@ -1,0 +1,6 @@
+{
+  "rules": {
+    ".read": "auth.uid !==null",  // 2024-12-22
+    ".write": "auth.token.admin==true",  // 2024-12-22
+  }
+}

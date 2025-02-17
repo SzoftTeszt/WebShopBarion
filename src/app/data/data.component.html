@@ -1,0 +1,27 @@
+<div class="row">
+    <div class="col">
+        <input [(ngModel)]="newHuman.name">
+    </div>
+    <div class="col">
+        <input type="number" [(ngModel)]="newHuman.age">
+    </div>
+    <div class="col">
+        <button (click)="pushHuman()">Add</button>        
+    </div>
+</div>
+<div *ngFor="let human of humans" class="row">
+    <div class="col">
+        <input [(ngModel)]="human.name">
+    </div>
+    <div class="col">
+        <input type="number" [(ngModel)]="human.age">
+    </div>
+    <div class="col">
+        <button (click)="updateHuman(human)">Update</button>
+        <button (click)="deleteHuman(human)">Delete</button>
+    </div>
+</div>
+
+
+<button (click)="pushHuman()">Add</button>
+<p>{{humans|json}}</p>
