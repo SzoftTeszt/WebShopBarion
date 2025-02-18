@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ShopService } from '../shop.service';
+import { BasketService } from '../basket.service';
 
 @Component({
   selector: 'app-shop',
@@ -8,9 +9,13 @@ import { ShopService } from '../shop.service';
 })
 export class ShopComponent {
   foods:any
-  constructor(private foodsService:ShopService){
+  constructor(private foodsService:ShopService, private basket:BasketService){
     this.foodsService.getFoods().subscribe(
       (res)=>this.foods=res
     )
+  }
+
+  addFood(food:any){
+    this.basket.addFood(food)
   }
 }

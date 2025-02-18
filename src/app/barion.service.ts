@@ -43,8 +43,8 @@ paymentRequest = {
         ]
       }
     ],
-    RedirectUrl: 'https://2080-195-199-244-145.ngrok-free.app/success',
-    CallbackUrl: 'https://1484-195-199-244-145.ngrok-free.app/callback',
+    RedirectUrl: 'https://6561-195-199-244-145.ngrok-free.app/success',
+    CallbackUrl: 'https://5e36-195-199-244-145.ngrok-free.app/spider-116a2/us-central1/api/callback',
     Currency: 'HUF',
     Locale: 'hu-HU'
   }
@@ -52,8 +52,15 @@ paymentRequest = {
 
   constructor(private http:HttpClient) { }
 
-  startPayment(){
-      return this.http.post(this.startAPI, this.paymentRequest)
+  startPayment(order:any){
+    this.paymentRequest.Transactions[0].Items=order.orderDetails
+    this.paymentRequest.Transactions[0].Total=order.orderDetails.reduce((sum:any, item:any)=>{
+         return sum.unitPrice+item.unitPrice  
+    })
+    this.paymentRequest.OrderNumber=order.id
+    this.paymentRequest.PaymentRequestId="PaymentRequest"+order.id
+
+    return this.http.post(this.startAPI, this.paymentRequest)
   }
 
   getPaymentState(paymentId:any){

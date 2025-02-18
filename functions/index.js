@@ -53,6 +53,10 @@ const verifyModerator =(req,res, next)=>{
   }
 }
 
+app.post('/callback', (req,res)=>{
+  res.status(200).send("OK");
+})
+
 app.get('/users',verifyToken, async (req, res) => {
 // app.get('/users',verifyToken,verifyAdmin, async (req, res) => {
   try{

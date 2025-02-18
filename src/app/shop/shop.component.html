@@ -1,2 +1,20 @@
-<p>shop works!</p>
-{{foods|json}}
+<!-- <p>shop works!</p> -->
+<!-- {{foods|json}} -->
+<div class="row row-cols-1 row-cols-md-3 g-4">
+    <div *ngFor="let food of foods" class="col">
+      <div class="card h-100">
+        <img [src]="food.kep" class="card-img-top" [alt]="food.nev">
+        <div class="card-body">
+          <h5 class="card-title">{{food.nev}}</h5>
+          <p class="card-text">{{food.leiras}}</p>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">
+            {{food.ar}}Ft <button (click)="addFood(food)" type="button" class="btn btn-primary">Kosárba</button>
+          </small>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
